@@ -1,4 +1,4 @@
-package listofstrings;
+package week3.listofstrings;
 
 import java.io.File;
 import java.io.FileNotFoundException;
