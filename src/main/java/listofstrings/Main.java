@@ -12,6 +12,7 @@ public class Main {
         List<String> txt = loadText("a.txt");
         System.out.println(txt);
         System.out.println("'Вася Пупкин' strings count: " + countTargetInList(txt, "Вася Пупкин"));
+        System.out.println("'Вася Пупкин' strings count calculated using stream api: " + countTargetInListStream(txt, "Вася Пупкин"));
         System.out.println("Strings starting with 'Вася' count: " + countStartInList(txt, "Вася"));
         System.out.println("Unique strings list: " + filterUnqique(txt));
 
@@ -72,6 +73,12 @@ public class Main {
             }
         }
         return count;
+    }
+
+    private static int countTargetInListStream(List<String> stringList, String target) {
+        return (int) stringList.stream()
+                .filter(s ->s.equals(target))
+                .count();
     }
 
     private static List<String> filterStringsByLength(List<String> stringsList, int length) {
