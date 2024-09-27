@@ -77,7 +77,7 @@ public class Main {
 
     private static int countTargetInListStream(List<String> stringList, String target) {
         return (int) stringList.stream()
-                .filter(s ->s.equals(target))
+                .filter(s -> s.equals(target))
                 .count();
     }
 
@@ -120,7 +120,7 @@ public class Main {
     //change parameter list for a change
     private static void replaceCharInStringsList(List<String> stringsList, char thisChar, char toThatChar) {
         //can be replaced with stringsList.replaceAll
-        for(int i = 0; i<stringsList.size();i++) {
+        for (int i = 0; i < stringsList.size(); i++) {
             stringsList.set(i, stringsList.get(i).replace(thisChar, toThatChar));
         }
     }
