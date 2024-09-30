@@ -1,5 +1,6 @@
 package week4.dictionaries;
 
+import javax.swing.text.html.parser.Entity;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -9,7 +10,42 @@ public class Dictionaries {
         //example1();
         //example2();
         //example3();
-        example4_suits();
+        //example4_suits();
+        example5_CardsForPlayers();
+    }
+
+    private static void example5_CardsForPlayers() {
+        Map<String, PlayingCard> playerMap = new TreeMap<>();
+        playerMap.put("Дима Т", new PlayingCard("трефы", "дама"));
+        playerMap.put("Максим", new PlayingCard("пики", "восьмерка"));
+        playerMap.put("Ричард", new PlayingCard("трефы", "9"));
+        playerMap.put("Чарльз", new PlayingCard("трефы", "8"));
+        playerMap.put("Вера", new PlayingCard("бубны", "король"));
+        playerMap.put("Василиса", new PlayingCard("червы", "валет"));
+        playerMap.put("Аня", new PlayingCard("черви", "8"));
+        playerMap.put("Ира", new PlayingCard("червы", "3"));
+        playerMap.put("Федя", new PlayingCard("бубны", "8"));
+
+        System.out.println("playerMap1 = " + playerMap);
+        String name1 = "Ира";
+        String name2 = "Чарльз";
+        System.out.println("карта человека:" + name1 + " это " + playerMap.get(name1));
+        System.out.println("карта человека:" + name2 + " это " + playerMap.get(name2));
+
+        //Найти имя игрока с бубновым королем
+        PlayingCard cardX = new PlayingCard("бубны", "король");
+        for (Map.Entry<String, PlayingCard> i : playerMap.entrySet()) {
+            //Doesn't work
+            if (i.getValue() == cardX)
+                System.out.println("ура, мы нашли игрока " + i.getKey());
+
+            if (i.getValue().getSuit().equals(cardX.getSuit()) &&
+                    i.getValue().getRank().equals(cardX.getRank()))
+                System.out.println("ура, мы нашли игрока " + i.getKey());
+
+        }
+        //Doesn't work
+        System.out.println(playerMap.containsValue(cardX));
     }
 
     private static void example4_suits() {
@@ -24,7 +60,7 @@ public class Dictionaries {
         hand.add(new PlayingCard("бубны", "двойка"));
 
         Map<String, Integer> table = new TreeMap<>();
-        for (PlayingCard i: hand) {
+        for (PlayingCard i : hand) {
             String key = i.getSuit();
             table.put(key, 1 + table.getOrDefault(key, 0));
         }
@@ -33,7 +69,7 @@ public class Dictionaries {
         //lol
         //UNTESTED
         for (Map.Entry<String, Integer> entry : table.entrySet())
-            if(entry.getValue() >= 5) System.out.println("flash in hand: " + entry.getKey());
+            if (entry.getValue() >= 5) System.out.println("flash in hand: " + entry.getKey());
     }
 
     private static void example3() {
