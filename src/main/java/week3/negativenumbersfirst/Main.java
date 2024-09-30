@@ -7,24 +7,27 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        List<Double> doublesList = readDoublesList(new File("negativenumbersfirst.txt"));
+        placeNegativesInTheBeginning(doublesList);
+        System.out.println(doublesList);
+    }
+
+    public static List<Double> readDoublesList(File sourceFile) {
         List<Double> doublesList = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File("negativenumbersfirst.txt"))) {
-            while (scanner.hasNext()) {
-                String line = scanner.nextLine().trim();
+        try (Scanner scanner = new Scanner(sourceFile)) {
+            String[] doublesAsStrings = scanner.nextLine().split(";");
+            for (String i : doublesAsStrings) {
                 try {
-                    double value = Double.parseDouble(line);
-                    doublesList.add(value);
-                    System.out.println("Added: " + value);
+                    doublesList.add(Double.parseDouble(i));
+                    System.out.println("Added: " + i);
                 } catch (NumberFormatException e) {
-                    System.err.println("Invalid double value: " + line);
+                    System.err.println("Invalid double value: " + i);
                 }
             }
         } catch (Exception e) {
-            System.out.println("Problem with file negativenumbersfirst.txt:\n"+e);
+            System.out.println("Problem with file " + sourceFile.getName() + ":\n" + e);
         }
-
-        placeNegativesInTheBeginning(doublesList);
-        System.out.println(doublesList);
+        return doublesList;
     }
 
     public static void placeNegativesInTheBeginning(List<Double> doublesList) {
