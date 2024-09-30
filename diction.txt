@@ -1,0 +1,8 @@
+делать do
+да yes
+обед lunch
+отладчик debugger
+программа program
+цикл loop
+класс class
+статический static
