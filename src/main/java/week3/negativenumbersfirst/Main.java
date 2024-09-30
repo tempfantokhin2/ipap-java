@@ -8,8 +8,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         List<Double> doublesList = readDoublesList(new File("negativenumbersfirst.txt"));
-        placeNegativesInTheBeginning(doublesList);
         System.out.println(doublesList);
+        placeNegativesInTheBeginningEfficent(doublesList);
+        System.out.println(doublesList);
+
     }
 
     public static List<Double> readDoublesList(File sourceFile) {
@@ -36,5 +38,15 @@ public class Main {
             if (a > 0 && b <= 0) return 1;
             return 0;
         });
+    }
+
+    public static void placeNegativesInTheBeginningEfficent(List<Double> doublesList) {
+        for (int i = 0, j = 0; i < doublesList.size(); i++) {
+            if (doublesList.get(i-j) >= 0) {
+                doublesList.add(doublesList.get(i-j));
+                doublesList.remove(i - j);
+                j++;
+            }
+        }
     }
 }
