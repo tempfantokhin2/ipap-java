@@ -3,8 +3,12 @@ package week4.enums;
 
 import java.util.Arrays;
 
-public class Robot {
+public class EnumsPractice {
     public static void main(String[] args) {
+        example1();
+    }
+
+    private static void example1() {
         RobotV2 testRobot = new RobotV2();
         //NORTH 0,0
         testRobot.doTurnRight();
@@ -32,6 +36,7 @@ public class Robot {
         //PRINT
         System.out.println(Arrays.toString(testRobot.getCoordinates()));
     }
+
 }
 
 enum CardinalDirections {
