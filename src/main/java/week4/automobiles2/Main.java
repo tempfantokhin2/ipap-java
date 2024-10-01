@@ -16,7 +16,7 @@ public class Main {
         Map<Car, String> cars = new HashMap<>();
         getCarsFromFile(cars);
         System.out.println("Cars = " + cars);
-        System.out.println("Какая машина интересна?");
+        System.out.println("Какая машина интересна? Марка, год, цвет:");
         Car targetCar = getTargetCar();
         System.out.println(cars.getOrDefault(targetCar, "машина не найдена"));
     }
@@ -35,7 +35,7 @@ public class Main {
 
     private static Car getTargetCar() {
         Scanner consoleScanner = new Scanner(System.in);
-        return new Car(consoleScanner.next(), Integer.parseInt(consoleScanner.next()), consoleScanner.next());
+        return new Car(consoleScanner.nextLine(), Integer.parseInt(consoleScanner.nextLine()), consoleScanner.nextLine());
     }
 
 
